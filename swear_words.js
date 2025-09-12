@@ -21,4 +21,4 @@ function containsSwearWord(text, mode) {
 }
 
 // 다른 파일에서 쓸 수 있게 내보내기
-export { swear_words_arr, containsSwearWord };
+//export { swear_words_arr, containsSwearWord };
