@@ -8,16 +8,32 @@ var swear_words_arr_eng = new Array("rosy palm and her 5 sisters", "son of a mot
 // containsSwearWord("이 텍스트에 욕이 있나요?", "kor"); // 한글만 검사
 // containsSwearWord("This text has a bad word", "eng");  // 영어만 검사함
 // containsSwearWord("혼합 텍스트", "all");               // 둘 다 검사함
-function containsSwearWord(text, mode) {
-    for (var i = 0; i < swear_words_arr.length; i++) {
-        if (
-            (mode === "kor" || mode === "all") && text.includes(swear_words_arr_kor[i]) ||
-            (mode === "eng" || mode === "all") && text.includes(swear_words_arr_eng[i])
-        ) {
-            return true;
+// 옵션: "kor" = 한글만, "eng" = 영어만, "all" = 모두
+function containsSwearWord(text, option = "all") {
+    let swearList = [];
+
+    if(option === "kor") {
+        swearList = swear_words_arr_kor;
+    } else if(option === "eng") {
+        swearList = swear_words_arr_eng;
+    } else if(option === "all") {
+        swearList = swear_words_arr_kor.concat(swear_words_arr_eng);
+    } else {
+        console.error("Invalid option. Use 'kor', 'eng', or 'all'.");
+        return false;
+    }
+
+    // 소문자로 변환 (영어만 소문자로)
+    let lowerText = text.toLowerCase();
+
+    // 배열 검사
+    for(let word of swearList) {
+        if(lowerText.includes(word.toLowerCase())) {
+            return true; // 욕설 발견
         }
     }
-    return false;
+
+    return false; // 없음
 }
 
 // 다른 파일에서 쓸 수 있게 내보내기
