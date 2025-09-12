@@ -6,8 +6,8 @@ var swear_words_arr_eng = new Array("rosy palm and her 5 sisters", "son of a mot
 // 욕설 포함 여부 확인 함수
 // mode: "kor" = 한글만, "eng" = 영어만, "all" = 둘 다
 // containsSwearWord("이 텍스트에 욕이 있나요?", "kor"); // 한글만 검사
-// containsSwearWord("This text has a bad word", "eng");  // 영어만 검사
-// containsSwearWord("혼합 텍스트", "all");               // 둘 다 검사
+// containsSwearWord("This text has a bad word", "eng");  // 영어만 검사함
+// containsSwearWord("혼합 텍스트", "all");               // 둘 다 검사함
 function containsSwearWord(text, mode) {
     for (var i = 0; i < swear_words_arr.length; i++) {
         if (
