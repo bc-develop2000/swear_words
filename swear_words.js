@@ -9,7 +9,7 @@ var swear_words_arr_eng = new Array("rosy palm and her 5 sisters", "son of a mot
 // containsSwearWord("This text has a bad word", "eng");  // 영어만 검사함
 // containsSwearWord("혼합 텍스트", "all");               // 둘 다 검사함
 // 옵션: "kor" = 한글만, "eng" = 영어만, "all" = 모두
-function containsSwearWord(text, option = "all") {
+export function containsSwearWord(text, option = "all") {
     let swearList = [];
 
     if(option === "kor") {
