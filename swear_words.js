@@ -14,10 +14,22 @@ export function containsSwearWord(text, option = "all") {
 
     if(option === "kor") {
         swearList = swear_words_arr_kor;
+        // 영어 대문자 A-Z, 소문자 a-z, 숫자 0-9, 숫자키 위쪽 특수문자 허용 (공백 제외)
+        if (!/^[A-Za-z0-9!@#$%^&*()\-=]+$/.test(text)) {
+            return false; // 허용 문자 외 포함 시 금지
+        }     
     } else if(option === "eng") {
         swearList = swear_words_arr_eng;
+        // 한글, 숫자 0-9, 숫자키 위쪽 특수문자 허용 (공백 제외)
+        if (!/^[가-힣0-9!@#$%^&*()\-=]+$/.test(text)) {
+            return false; // 허용 문자 외 포함 시 금지
+        }
     } else if(option === "all") {
         swearList = swear_words_arr_kor.concat(swear_words_arr_eng);
+        // 한글, 영어 대문자 A-Z, 소문자 a-z, 숫자 0-9, 숫자키 위쪽 특수문자 허용 (공백 제외)
+        if (!/^[가-힣A-Za-z0-9!@#$%^&*()\-=]+$/.test(text)) {
+            return false; // 허용 문자 외 포함 시 금지
+        }
     } else {
         console.error("Invalid option. Use 'kor', 'eng', or 'all'.");
         return false;
